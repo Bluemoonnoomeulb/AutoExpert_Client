@@ -1,21 +1,20 @@
-package com.bluemoon.autoexpert.ui.dashboard
+package com.bluemoon.autoexpert.ui.favorites
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.bluemoon.autoexpert.databinding.FragmentDashboardBinding
+import com.bluemoon.autoexpert.databinding.FragmentFavoritesBinding
 
-class DashboardFragment : Fragment() {
+class FavoritesFragment : Fragment() {
 
-    private var _binding: FragmentDashboardBinding? = null
+    private  var _binding: FragmentFavoritesBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
+    private val binding get() = requireNotNull(_binding) { "_binding is null" }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,15 +22,15 @@ class DashboardFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
+            ViewModelProvider(this).get(FavoritesViewModel::class.java)
 
-        _binding = FragmentDashboardBinding.inflate(inflater, container, false)
+        _binding = FragmentFavoritesBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
+        /*val textView: TextView = binding.textDashboard
         dashboardViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
-        }
+        }*/
         return root
     }
 
