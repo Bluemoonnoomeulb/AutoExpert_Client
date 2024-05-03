@@ -1,4 +1,4 @@
-package com.bluemoon.autoexpert.ui.notifications
+package com.bluemoon.autoexpert.ui.history
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,15 +7,15 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.bluemoon.autoexpert.databinding.FragmentNotificationsBinding
+import com.bluemoon.autoexpert.databinding.FragmentHistoryBinding
 
-class NotificationsFragment : Fragment() {
+class HistoryFragment : Fragment() {
 
-    private var _binding: FragmentNotificationsBinding? = null
+    private var _binding: FragmentHistoryBinding? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
-    private val binding get() = _binding!!
+    private val binding get() = requireNotNull(_binding) { "_binding is null" }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,9 +23,9 @@ class NotificationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         val notificationsViewModel =
-            ViewModelProvider(this).get(NotificationsViewModel::class.java)
+            ViewModelProvider(this).get(HistoryViewModel::class.java)
 
-        _binding = FragmentNotificationsBinding.inflate(inflater, container, false)
+        _binding = FragmentHistoryBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         val textView: TextView = binding.textNotifications
